@@ -1,3 +1,4 @@
+import { Button } from "./components/ui/button"
 
 
 function App() {
@@ -5,7 +6,8 @@ function App() {
 
   return (
     <>
-      Lorem Ipsum
+      
+      <Button variant="ghost">Test</Button>
     </>
   )
 }
