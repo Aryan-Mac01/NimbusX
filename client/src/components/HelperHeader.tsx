@@ -28,7 +28,7 @@ export default function HelperHeader() {
         </Button>
       </div>
       <div className="__tab_switcher">
-        <Select defaultValue="html">
+        <Select defaultValue="html" onValueChange={(value)=>console.log(value)}>
           <SelectTrigger className="w-[180px] bg-gray-800 outline-none focus:ring-0">
             <SelectValue/>
           </SelectTrigger>
