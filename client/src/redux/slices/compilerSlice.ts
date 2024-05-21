@@ -10,17 +10,15 @@ export interface CompilerSliceStateType {
   };
 
   currentLanguage: "html" | "css" | "javascript ";
-  currentCode: string;
 }
 
 const initialState: CompilerSliceStateType = {
   fullCode: {
-    html: "This is HTML Code",
-    css: "This is CSS Code",
-    javascript: "This is JS Code",
+    html: "HTML idhr",
+    css: "CSS yaha",
+    javascript: "JavaScript iss jagah",
   },
   currentLanguage: "html",
-  currentCode: "",
 };
 
 const compilerSlice = createSlice({
@@ -33,22 +31,12 @@ const compilerSlice = createSlice({
     ) => {
       state.currentLanguage = action.payload;
     },
-    updateCodeValue: (
-      state,
-      action: PayloadAction<{
-        language: CompilerSliceStateType["currentLanguage"];
-        code: string;
-      }>
-    ) => {
-      const { code, language } = action.payload;
-      state.fullCode[language] = code;
-    },
-    updateCurrentCode: (state, action: PayloadAction<string>) => {
-      state.currentCode = action.payload;
+    updateCodeValue: (state, action: PayloadAction<string>) => {
+      //const { code, language } = action.payload;
+      state.fullCode[state.currentLanguage] = action.payload;
     },
   },
 });
 
 export default compilerSlice.reducer;
-export const { updateCurrentLanguage, updateCodeValue, updateCurrentCode } =
-  compilerSlice.actions;
+export const { updateCurrentLanguage, updateCodeValue } = compilerSlice.actions;
