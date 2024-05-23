@@ -1,4 +1,4 @@
-import { Save, Share2, LoaderCircle } from "lucide-react";
+import { Save, Share2, LoaderCircle, Code, Copy } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   Select,
@@ -25,6 +25,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { toast } from "sonner";
 
 export default function HelperHeader() {
   const [saveLoading, setSaveLoading] = useState<boolean>(false);
@@ -73,21 +74,40 @@ export default function HelperHeader() {
         </Button>
 
         <Dialog>
-          <DialogTrigger>
-            <Button
-              className="flex justify-center items-center gap-1"
-              variant="secondary"
-            >
-              <Share2 size={16} />
-              Share
-            </Button>
+          <DialogTrigger className="whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 h-9 px-4 py-2 flex justify-center items-center gap-1">
+            <Share2 size={16} />
+            Share
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Are you absolutely sure?</DialogTitle>
-              <DialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
+              <DialogTitle className="flex gap-1 justify-center items-centers">
+                <Code />
+                Share your code!
+              </DialogTitle>
+              <DialogDescription className="flex flex-col gap-2">
+                <div className="__url flex gap-1">
+                  <input
+                    type="text"
+                    disabled
+                    className="w-full px-2 py-2 rounded bg-slate-800 text-white"
+                    value={window.location.href}
+                  />
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      window.navigator.clipboard.writeText(
+                        window.location.href
+                      );
+                      toast("URL Copied to your clipboard")
+                    }}
+                  >
+                    <Copy size={14} />
+                  </Button>
+                </div>
+
+                <p className="text-center">
+                  Share this URL with your friends to collaborate.
+                </p>
               </DialogDescription>
             </DialogHeader>
           </DialogContent>
