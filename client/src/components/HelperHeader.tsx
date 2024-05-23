@@ -17,6 +17,14 @@ import { handleError } from "@/utils/handleError";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 export default function HelperHeader() {
   const [saveLoading, setSaveLoading] = useState<boolean>(false);
@@ -51,7 +59,6 @@ export default function HelperHeader() {
           variant="success"
           disabled={saveLoading}
         >
-          
           {saveLoading ? (
             <>
               <LoaderCircle className="animate-spin" />
@@ -64,13 +71,27 @@ export default function HelperHeader() {
             </>
           )}
         </Button>
-        <Button
-          className="flex justify-center items-center gap-1"
-          variant="secondary"
-        >
-          <Share2 size={16} />
-          Share
-        </Button>
+
+        <Dialog>
+          <DialogTrigger>
+            <Button
+              className="flex justify-center items-center gap-1"
+              variant="secondary"
+            >
+              <Share2 size={16} />
+              Share
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Are you absolutely sure?</DialogTitle>
+              <DialogDescription>
+                This action cannot be undone. This will permanently delete your
+                account and remove your data from our servers.
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
       <div className="__tab_switcher">
         <Select
