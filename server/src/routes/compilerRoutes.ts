@@ -1,6 +1,6 @@
 import express from "express"
 import { saveCode } from "../controllers/compilerController"
 
-export const compilerRoute = express.Router()
+export const compilerRouter = express.Router()
 
-compilerRoute.post("/save",saveCode)
+compilerRouter.post("/save",saveCode)
