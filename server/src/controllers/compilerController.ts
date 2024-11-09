@@ -14,7 +14,7 @@ export const saveCode = async (req: Request, res: Response) => {
 };
 
 export const loadCode = async (req: Request, res: Response) => {
-  const urlId = req.body;
+  const {urlId} = req.body;                                             // yaha pe error tha. body ko destructure nahi kiya tha 
   try {
     const existingCode = await Code.findById(urlId);
     if (!existingCode) {
