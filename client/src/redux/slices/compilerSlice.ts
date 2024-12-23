@@ -9,7 +9,7 @@ export interface CompilerSliceStateType {
     javascript: string;
   };
 
-  currentLanguage: "html" | "css" | "javascript ";
+  currentLanguage: "html" | "css" | "javascript";
 }
 
 const initialState: CompilerSliceStateType = {
