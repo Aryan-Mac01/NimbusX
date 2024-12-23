@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit/react";
-import { act } from "react";
+// import { act } from "react";
 
 export interface CompilerSliceStateType {
   fullCode: {
@@ -9,7 +9,7 @@ export interface CompilerSliceStateType {
     javascript: string;
   };
 
-  currentLanguage: "html" | "css" | "javascript ";
+  currentLanguage: "html" | "css" | "javascript";
 }
 
 const initialState: CompilerSliceStateType = {
